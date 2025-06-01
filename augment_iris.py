@@ -13,4 +13,4 @@ augmented_df = pd.concat([df, additional_rows])
 # Save the new dataset
 augmented_df.to_csv('data/iris.csv', index=False)
 
-print('iris.csv dataset augmented with 60 more rows. Shape {augmented_df.shape}')
+print(f'iris.csv dataset augmented with 60 more rows. Shape {augmented_df.shape}')
