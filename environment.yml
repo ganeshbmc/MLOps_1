@@ -1,0 +1,7 @@
+name: iris_env_c
+channels:
+  - conda-forge
+dependencies:
+  - python=3.10
+  - dvc
+prefix: /opt/conda/envs/iris_env_c
