@@ -25,4 +25,4 @@ prediction=mod_dt.predict(X_test)
 print('The accuracy of the Decision Tree is',"{:.3f}".format(metrics.accuracy_score(prediction,y_test)))
 
 joblib.dump(mod_dt, "artifacts/model.joblib")
-print{f"model.joblib file added/modified to artifacts folder"}
+print(f"model.joblib file added/modified to artifacts folder")
