@@ -7,4 +7,7 @@ dependencies:
   - joblib
   - scikit-learn
   - pandas
+  - pip
+  - pip:
+      - pytest>=7.0
 prefix: /opt/conda/envs/iris_env_c
