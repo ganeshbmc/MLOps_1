@@ -8,5 +8,7 @@ dependencies:
   - scikit-learn
   - pandas
   - pip
-  - pytest>=7.0
+  - pip:
+      - pytest>=7.0
+      - cml
 prefix: /opt/conda/envs/iris_env_c

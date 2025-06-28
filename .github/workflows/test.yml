@@ -22,7 +22,7 @@ jobs:
         shell: bash -l {0}
         run: |
           conda activate iris_env_c
-          pip install pytest cml
+          # pip install pytest cml
 
       - name: Run tests and create report
         shell: bash -l {0}
