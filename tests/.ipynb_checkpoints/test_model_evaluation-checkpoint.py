@@ -37,7 +37,7 @@ def test_model_accuracy():
 
     conf_matrix = confusion_matrix(merged["species"], merged["predicted_label"])
     print("Confusion Matrix:\n")
-    print(textwrap.indent(conf_matrix, prefix="    "))
+    print(textwrap.indent(str(conf_matrix, prefix="    ")))
 
     # Compute accuracy
     accuracy = accuracy_score(merged["species"], merged["predicted_label"])
