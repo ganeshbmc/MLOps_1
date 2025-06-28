@@ -1,0 +1,40 @@
+name: CI with CML
+
+on: [pull_request]
+
+jobs:
+  run-tests:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Miniconda
+        uses: conda-incubator/setup-miniconda@v3
+        with:
+          environment-file: environment.yml
+          activate-environment: iris_env_c
+          auto-activate-base: false
+          miniforge-variant: Mambaforge  # Faster installation
+          use-mamba: true
+
+      - name: Install additional packages (pytest, cml)
+        shell: bash -l {0}
+        run: |
+          conda activate iris_env_c
+          pip install pytest cml
+
+      - name: Run tests and create report
+        shell: bash -l {0}
+        run: |
+          conda activate iris_env_c
+          echo "## Test Report" > report.md
+          pytest tests/ --tb=short >> report.md || true
+
+      - name: Comment on PR
+        env:
+          REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          cml comment create report.md
+
