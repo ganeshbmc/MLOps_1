@@ -52,7 +52,7 @@ jobs:
         run: |
           conda activate iris_env_c
           echo "## Test Report 📋" > report.md
-          pytest tests/ --tb=short >> report.md || true
+        pytest tests/ --tb=short -p no:warnings >> report.md || true
 
       - name: Set up CML
         uses: iterative/setup-cml@v2

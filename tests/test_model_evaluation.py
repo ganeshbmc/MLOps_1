@@ -1,6 +1,6 @@
 import pandas as pd
 import joblib
-from sklearn.metrics import accuracy_score
+from sklearn.metrics import accuracy_score, classification_report, confusion_matrix
 import os
 
 ROOT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -28,6 +28,13 @@ def test_model_accuracy():
 
     # Merge into single table
     merged = online_features.merge(true_labels, on="flower_id", how="inner")
+    
+    # Print full report
+    print("Classification Report:\n")
+    print(classification_report(y_true, y_pred))
+
+    print("Confusion Matrix:\n")
+    print(confusion_matrix(y_true, y_pred))
 
     # Compute accuracy
     accuracy = accuracy_score(merged["species"], merged["predicted_label"])
