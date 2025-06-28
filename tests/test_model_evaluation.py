@@ -31,10 +31,10 @@ def test_model_accuracy():
     
     # Print full report
     print("Classification Report:\n")
-    print(classification_report(y_true, y_pred))
+    print(classification_report(merged["species"], merged["predicted_label"]))
 
     print("Confusion Matrix:\n")
-    print(confusion_matrix(y_true, y_pred))
+    print(confusion_matrix(merged["species"], merged["predicted_label"]))
 
     # Compute accuracy
     accuracy = accuracy_score(merged["species"], merged["predicted_label"])

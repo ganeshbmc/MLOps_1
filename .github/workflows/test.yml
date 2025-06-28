@@ -51,7 +51,7 @@ jobs:
         shell: bash -l {0}
         run: |
           conda activate iris_env_c
-          echo "## Test Report 📋" > report.md
+          echo "## Test Report" > report.md
         pytest tests/ --tb=short -p no:warnings >> report.md || true
 
       - name: Set up CML
@@ -62,4 +62,5 @@ jobs:
           REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           cml comment create report.md
+
 
