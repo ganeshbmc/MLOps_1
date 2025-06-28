@@ -28,6 +28,12 @@ jobs:
           conda activate iris_env_c
           pip install pytest
 
+      - name: DVC Pull Data
+        shell: bash -l {0}
+        run: |
+          conda activate iris_env_c
+          dvc pull
+
       - name: Run tests and create report
         shell: bash -l {0}
         run: |
