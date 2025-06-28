@@ -34,6 +34,8 @@ jobs:
           export GOOGLE_APPLICATION_CREDENTIALS=$(pwd)/gcp-key.json
           gcloud auth activate-service-account --key-file=$GOOGLE_APPLICATION_CREDENTIALS
         shell: bash
+        env:
+          GCP_SERVICE_ACCOUNT_KEY: ${{ secrets.GCP_SERVICE_ACCOUNT_KEY }}
 
 
       - name: DVC Pull Data
