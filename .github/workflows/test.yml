@@ -16,22 +16,25 @@ jobs:
           environment-file: environment.yml
           activate-environment: iris_env_c
           auto-activate-base: false
-          miniforge-variant: Miniforge3  # Use Miniforge3 as recommended 
+          miniforge-variant: Miniforge3
 
-      - name: Install additional packages (pytest, cml)
+      - name: Install pytest
         shell: bash -l {0}
         run: |
           conda activate iris_env_c
-          # pip install pytest cml
+          pip install pytest
 
       - name: Run tests and create report
         shell: bash -l {0}
         run: |
           conda activate iris_env_c
-          echo "## Test Report" > report.md
+          echo "## Test Report 📋" > report.md
           pytest tests/ --tb=short >> report.md || true
 
-      - name: Comment on PR
+      - name: Set up CML
+        uses: iterative/setup-cml@v2
+
+      - name: Comment on PR with test results
         env:
           REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
