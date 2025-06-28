@@ -10,5 +10,5 @@ dependencies:
   - pip
   - pip:
       - pytest>=7.0
-      - cml
+      - cml==0.10.5
 prefix: /opt/conda/envs/iris_env_c
