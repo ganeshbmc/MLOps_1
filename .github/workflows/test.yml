@@ -16,8 +16,7 @@ jobs:
           environment-file: environment.yml
           activate-environment: iris_env_c
           auto-activate-base: false
-          miniforge-variant: Mambaforge  # Faster installation
-          use-mamba: true
+          miniforge-variant: Miniforge3  # Use Miniforge3 as recommended 
 
       - name: Install additional packages (pytest, cml)
         shell: bash -l {0}
