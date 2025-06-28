@@ -43,7 +43,9 @@ jobs:
         run: |
           export GOOGLE_APPLICATION_CREDENTIALS=$(pwd)/gcp-key.json
           conda activate iris_env_c
-          dvc pull
+          dvc pull --force
+          ls data/
+          ls artifacts/
 
       - name: Run tests and create report
         shell: bash -l {0}
