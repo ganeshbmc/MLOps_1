@@ -22,11 +22,11 @@ jobs:
           auto-activate-base: false
           miniforge-variant: Miniforge3
 
-      - name: Install pytest
+      - name: Install required Python packages (pytest, dvc-gs)
         shell: bash -l {0}
         run: |
           conda activate iris_env_c
-          pip install pytest
+          pip install pytest dvc-gs
 
       - name: DVC Pull Data
         shell: bash -l {0}
