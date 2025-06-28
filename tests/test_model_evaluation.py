@@ -1,6 +1,7 @@
 import pandas as pd
 import joblib
 from sklearn.metrics import accuracy_score
+import os
 
 ROOT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
