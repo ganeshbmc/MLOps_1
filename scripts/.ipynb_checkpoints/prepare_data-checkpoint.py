@@ -1,4 +1,7 @@
+import sys
 import os
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+
 from helpers.feast_utils import load_training_data, load_simulated_online_features
 
 # Output directory
@@ -15,7 +18,7 @@ df_2023_2024 = load_training_data(from_year=2023, to_year=2024)
 df_2023_2024.to_csv("data/train_2023_2024.csv", index=False)
 
 # Prepare test dataset (simulated online features for 2025)
-df_test_2025 = load_simulated_online_features(year=2025)
+df_test_2025 = load_simulated_online_features(from_year=2025, to_year=2025)
 df_test_2025.to_csv("data/test_2025.csv", index=False)
 
 print("Data preparation completed.")

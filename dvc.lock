@@ -1,0 +1,162 @@
+schema: '2.0'
+stages:
+  prepare_data:
+    cmd: python scripts/prepare_data.py
+    deps:
+    - path: data/iris_entity.csv
+      hash: md5
+      md5: 236b92ba5aada0671c265bd508c46310
+      size: 9926
+    - path: helpers/feast_utils.py
+      hash: md5
+      md5: da00271ef52ed954e03072be334e33fa
+      size: 3667
+    outs:
+    - path: data/test_2025.csv
+      hash: md5
+      md5: 076782b41e776c1ab1c2c915c3b9589d
+      size: 6513
+    - path: data/train_2023.csv
+      hash: md5
+      md5: 5445e8d260403fe33bb843b63166f520
+      size: 8276
+    - path: data/train_2023_2024.csv
+      hash: md5
+      md5: 101a490a82def2e647d8549a48b45d99
+      size: 18399
+    - path: data/train_2024.csv
+      hash: md5
+      md5: 87791643a4a1f0b9013d69f711ac87bd
+      size: 10207
+  train_2023:
+    cmd: python scripts/train_with_mlflow_tracking.py --train_csv data/train_2023.csv
+      --model_out artifacts/model_2023.joblib --metrics_out metrics/metrics_2023.json
+      --experiment_name iris_hpt_2023
+    deps:
+    - path: data/train_2023.csv
+      hash: md5
+      md5: 5445e8d260403fe33bb843b63166f520
+      size: 8276
+    - path: scripts/train_with_mlflow_tracking.py
+      hash: md5
+      md5: e5ffac4394fd3e942c14812e20d2c096
+      size: 3573
+    outs:
+    - path: artifacts/model_2023.joblib
+      hash: md5
+      md5: 69b47804884b092e41a3dd5600bbfaf1
+      size: 89025
+    - path: metrics/metrics_2023.json
+      hash: md5
+      md5: 95e99986f51e70eb66e74175db91a589
+      size: 91
+  evaluate_2023:
+    cmd: python scripts/evaluate_with_mlflow_tracking.py --model artifacts/model_2023.joblib
+      --test_csv data/test_2025.csv --metrics_out metrics/eval_2023.json --experiment_name
+      iris_hpt_2023
+    deps:
+    - path: artifacts/model_2023.joblib
+      hash: md5
+      md5: 69b47804884b092e41a3dd5600bbfaf1
+      size: 89025
+    - path: data/test_2025.csv
+      hash: md5
+      md5: 076782b41e776c1ab1c2c915c3b9589d
+      size: 6513
+    - path: scripts/evaluate_with_mlflow_tracking.py
+      hash: md5
+      md5: b4b23f2c0656d86ab16b34e2c58d0605
+      size: 2594
+    outs:
+    - path: metrics/eval_2023.json
+      hash: md5
+      md5: 7fe3a7f42cd0ab97ccc28e76acdebc0a
+      size: 794
+  train_2024:
+    cmd: python scripts/train_with_mlflow_tracking.py --train_csv data/train_2024.csv
+      --model_out artifacts/model_2024.joblib --metrics_out metrics/metrics_2024.json
+      --experiment_name iris_hpt_2024
+    deps:
+    - path: data/train_2024.csv
+      hash: md5
+      md5: 87791643a4a1f0b9013d69f711ac87bd
+      size: 10207
+    - path: scripts/train_with_mlflow_tracking.py
+      hash: md5
+      md5: e5ffac4394fd3e942c14812e20d2c096
+      size: 3573
+    outs:
+    - path: artifacts/model_2024.joblib
+      hash: md5
+      md5: 88624e6fa1d059dd02a454c36839d2b6
+      size: 91137
+    - path: metrics/metrics_2024.json
+      hash: md5
+      md5: 7ac50d30dfdeaf266cedb4237bdc49cc
+      size: 91
+  evaluate_2024:
+    cmd: python scripts/evaluate_with_mlflow_tracking.py --model artifacts/model_2024.joblib
+      --test_csv data/test_2025.csv --metrics_out metrics/eval_2024.json --experiment_name
+      iris_hpt_2024
+    deps:
+    - path: artifacts/model_2024.joblib
+      hash: md5
+      md5: 88624e6fa1d059dd02a454c36839d2b6
+      size: 91137
+    - path: data/test_2025.csv
+      hash: md5
+      md5: 076782b41e776c1ab1c2c915c3b9589d
+      size: 6513
+    - path: scripts/evaluate_with_mlflow_tracking.py
+      hash: md5
+      md5: b4b23f2c0656d86ab16b34e2c58d0605
+      size: 2594
+    outs:
+    - path: metrics/eval_2024.json
+      hash: md5
+      md5: 32a99c44e88489fddfadcddeef981260
+      size: 776
+  train_2023_2024:
+    cmd: python scripts/train_with_mlflow_tracking.py --train_csv data/train_2023_2024.csv
+      --model_out artifacts/model_2023_2024.joblib --metrics_out metrics/metrics_2023_2024.json
+      --experiment_name iris_hpt_2023_2024
+    deps:
+    - path: data/train_2023_2024.csv
+      hash: md5
+      md5: 101a490a82def2e647d8549a48b45d99
+      size: 18399
+    - path: scripts/train_with_mlflow_tracking.py
+      hash: md5
+      md5: 7f16a5ef8e4a2e46a79828b9bb6958e1
+      size: 3237
+    outs:
+    - path: artifacts/model_2023_2024.joblib
+      hash: md5
+      md5: dc1cda046295a7e1bacdb3be88afc48e
+      size: 78657
+    - path: metrics/metrics_2023_2024.json
+      hash: md5
+      md5: 1fffc3d09de45d9507de4406d951eaf4
+      size: 90
+  evaluate_2023_2024:
+    cmd: python scripts/evaluate_with_mlflow_tracking.py --model artifacts/model_2023_2024.joblib
+      --test_csv data/test_2025.csv --metrics_out metrics/eval_2023_2024.json --experiment_name
+      iris_hpt_2023_2024
+    deps:
+    - path: artifacts/model_2023_2024.joblib
+      hash: md5
+      md5: dc1cda046295a7e1bacdb3be88afc48e
+      size: 78657
+    - path: data/test_2025.csv
+      hash: md5
+      md5: 076782b41e776c1ab1c2c915c3b9589d
+      size: 6513
+    - path: scripts/evaluate_with_mlflow_tracking.py
+      hash: md5
+      md5: 78be22a1dcce98b714e11883f830083e
+      size: 2316
+    outs:
+    - path: metrics/eval_2023_2024.json
+      hash: md5
+      md5: 32a99c44e88489fddfadcddeef981260
+      size: 776

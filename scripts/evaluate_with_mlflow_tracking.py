@@ -3,8 +3,8 @@ import os
 import json
 import joblib
 import pandas as pd
-import mlflow
 from sklearn.metrics import accuracy_score, classification_report
+import mlflow
 
 # Argument parsing
 parser = argparse.ArgumentParser()
@@ -14,10 +14,32 @@ parser.add_argument("--metrics_out", required=True, help="Path to output metrics
 parser.add_argument("--experiment_name", required=False, help="MLflow experiment name", default=None)
 args = parser.parse_args()
 
+# Set MLflow tracking details
+mlflow.set_tracking_uri("http://127.0.0.1:8100")  # or your Vertex AI endpoint
+
+# (optional) Try to use SQLITE db and GCS for tracking and artifact storage respectively
+# mlflow.set_tracking_uri(os.getenv("MLFLOW_TRACKING_URI"))
+# # mlflow.set_artifact_uri(os.getenv("MLFLOW_ARTIFACT_URI"))    # This line does not work
+# These secrets are available in the ~/.bashrc file. If any error: 1. Source the ~/.bashrc file. or 2. Hardcode the URIs here.
+
+# Set mlflow experiment name 
+mlflow.set_experiment(args.experiment_name)
+
 # Load test data
 df_test = pd.read_csv(args.test_csv)
-X_test = df_test.drop(columns=["species"])
+
+# Drop any metadata columns that weren't used during training
+df_test = df_test.drop(columns=["flower_id", "event_timestamp"], errors="ignore")
+
+# Define the expected feature columns
+feature_cols = ['sepal_length', 'sepal_width', 'petal_length', 'petal_width']
+
+# Ensure consistent feature order for inference
+X_test = df_test[feature_cols]
+
+# Extract target
 y_test = df_test["species"]
+
 
 # Load model and label encoder
 model = joblib.load(args.model)
@@ -44,6 +66,7 @@ if args.experiment_name:
     mlflow.set_experiment(args.experiment_name)
     with mlflow.start_run(run_name="evaluation"):
         mlflow.log_metric("accuracy", accuracy)
+        mlflow.set_tag("stage", "evaluation")
         for label, scores in report.items():
             if isinstance(scores, dict):
                 for metric, value in scores.items():

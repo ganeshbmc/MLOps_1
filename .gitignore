@@ -2,3 +2,7 @@ iris_venv/
 /data
 /artifacts
 /metrics
+
+!data/*.dvc
+!artifacts/*.dvc
+!metrics/*.dvc

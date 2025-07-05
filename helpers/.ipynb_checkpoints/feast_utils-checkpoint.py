@@ -103,5 +103,5 @@ def load_simulated_online_features(from_year: int, to_year: int, entity_path="da
     ).to_df()
 
     # Join features with labels
-    result = pd.merge(online_features, df[["flower_id", "species"]], on="flower_id", how="left")
+    result = pd.merge(df, online_features, on="flower_id", how="left")
     return result
