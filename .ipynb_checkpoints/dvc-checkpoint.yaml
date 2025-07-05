@@ -1,0 +1,65 @@
+stages:
+  prepare_data:
+    cmd: python scripts/prepare_data.py
+    deps:
+      - helpers/feast_utils.py
+      - data/iris_entity.csv
+    outs:
+      - data/train_2023.csv
+      - data/train_2024.csv
+      - data/train_2023_2024.csv
+      - data/test_2025.csv
+
+  train_2023:
+    cmd: python scripts/train_with_mlflow_tracking.py --train_csv data/train_2023.csv --model_out artifacts/model_2023.joblib --metrics_out metrics/metrics_2023.json --experiment_name iris_hpt_2023
+    deps:
+      - scripts/train_with_mlflow_tracking.py
+      - data/train_2023.csv
+    outs:
+      - artifacts/model_2023.joblib
+      - metrics/metrics_2023.json
+
+  evaluate_2023:
+    cmd: python scripts/evaluate_with_mlflow_tracking.py --model artifacts/model_2023.joblib --test_csv data/test_2025.csv --metrics_out metrics/eval_2023.json --experiment_name iris_hpt_2023
+    deps:
+      - scripts/evaluate_with_mlflow_tracking.py
+      - artifacts/model_2023.joblib
+      - data/test_2025.csv
+    outs:
+      - metrics/eval_2023.json
+
+  train_2024:
+    cmd: python scripts/train_with_mlflow_tracking.py --train_csv data/train_2024.csv --model_out artifacts/model_2024.joblib --metrics_out metrics/metrics_2024.json --experiment_name iris_hpt_2024
+    deps:
+      - scripts/train_with_mlflow_tracking.py
+      - data/train_2024.csv
+    outs:
+      - artifacts/model_2024.joblib
+      - metrics/metrics_2024.json
+
+  evaluate_2024:
+    cmd: python scripts/evaluate_with_mlflow_tracking.py --model artifacts/model_2024.joblib --test_csv data/test_2025.csv --metrics_out metrics/eval_2024.json --experiment_name iris_hpt_2024
+    deps:
+      - scripts/evaluate_with_mlflow_tracking.py
+      - artifacts/model_2024.joblib
+      - data/test_2025.csv
+    outs:
+      - metrics/eval_2024.json
+
+  train_2023_2024:
+    cmd: python scripts/train_with_mlflow_tracking.py --train_csv data/train_2023_2024.csv --model_out artifacts/model_2023_2024.joblib --metrics_out metrics/metrics_2023_2024.json --experiment_name iris_hpt_2023_2024
+    deps:
+      - scripts/train_with_mlflow_tracking.py
+      - data/train_2023_2024.csv
+    outs:
+      - artifacts/model_2023_2024.joblib
+      - metrics/metrics_2023_2024.json
+
+  evaluate_2023_2024:
+    cmd: python scripts/evaluate_with_mlflow_tracking.py --model artifacts/model_2023_2024.joblib --test_csv data/test_2025.csv --metrics_out metrics/eval_2023_2024.json --experiment_name iris_hpt_2023_2024
+    deps:
+      - scripts/evaluate_with_mlflow_tracking.py
+      - artifacts/model_2023_2024.joblib
+      - data/test_2025.csv
+    outs:
+      - metrics/eval_2023_2024.json
