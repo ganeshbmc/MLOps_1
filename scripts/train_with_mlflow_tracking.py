@@ -1,5 +1,4 @@
 import argparse
-import os
 import json
 import joblib
 import mlflow
@@ -8,6 +7,11 @@ import pandas as pd
 from sklearn.model_selection import GridSearchCV
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.preprocessing import LabelEncoder
+
+import os
+import sys
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+from helpers.mlflow_dvc_utils import get_git_commit_hash, get_dvc_md5_hash_from_lock  
 
 # Argument parsing
 parser = argparse.ArgumentParser()
@@ -55,7 +59,12 @@ with mlflow.start_run(run_name="training"):
     mlflow.set_tag("dataset", args.train_csv)
     mlflow.set_tag("model_type", "RandomForestClassifier")
     mlflow.set_tag("cv_method", "GridSearchCV")
-    mlflow.set_tag("stage", "trainig")
+    mlflow.set_tag("stage", "training")
+    
+    # Add details of the exact dvc file and git commit used
+    mlflow.set_tag("train_data_path", args.train_csv)
+    mlflow.set_tag("train_data_md5", get_dvc_md5_hash_from_lock(args.train_csv))
+    mlflow.set_tag("git_commit", get_git_commit_hash())
 
     # Infer model signature
     signature = infer_signature(X, clf.best_estimator_.predict(X))

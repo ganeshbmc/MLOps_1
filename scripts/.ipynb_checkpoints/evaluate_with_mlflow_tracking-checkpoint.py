@@ -1,10 +1,14 @@
 import argparse
-import os
 import json
 import joblib
 import pandas as pd
 from sklearn.metrics import accuracy_score, classification_report
 import mlflow
+
+import os
+import sys
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+from helpers.mlflow_dvc_utils import get_git_commit_hash, get_dvc_md5_hash_from_lock  
 
 # Argument parsing
 parser = argparse.ArgumentParser()
@@ -67,6 +71,12 @@ if args.experiment_name:
     with mlflow.start_run(run_name="evaluation"):
         mlflow.log_metric("accuracy", accuracy)
         mlflow.set_tag("stage", "evaluation")
+        
+        # Add details of the exact dvc file and git commit used
+        mlflow.set_tag("git_commit", get_git_commit_hash())
+        mlflow.log_param("test_data_path", args.test_csv)
+        mlflow.log_param("test_data_md5", get_dvc_md5_hash_from_lock(args.test_csv))
+        
         for label, scores in report.items():
             if isinstance(scores, dict):
                 for metric, value in scores.items():
