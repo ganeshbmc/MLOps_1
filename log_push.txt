@@ -4,3 +4,5 @@ Fri Jul 25 15:20:14 UTC 2025 - Modified test files to point to correct file path
 Fri Jul 25 15:55:39 UTC 2025 - Changed gitignore file and added specific files to be tracked by dvc
 Fri Jul 25 16:01:00 UTC 2025 - Modified test file again and changed back the file path to be relative to root
 Fri Jul 25 16:59:33 UTC 2025 - FastAPI app set up complete and tested with uvicorn locally. Used label encoder in addition to model joblib file
+Fri Jul 25 17:51:28 UTC 2025 - Docker set up complete. Checked locally using postman.
+Fri Jul 25 18:58:04 UTC 2025 - Kubernetes successfully set up. Deployed the iris-api docker container; had to change port from 8200 to 80 in Dockerfile. Could successfully test the deployment using postman.
