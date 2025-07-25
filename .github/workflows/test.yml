@@ -100,3 +100,31 @@ jobs:
       - name: Deploy latest image to GKE
         run: |
           kubectl set image deployment/demo-iris-workload iris-api-sha256-1=us-central1-docker.pkg.dev/polar-pillar-461115-g2/my-repo/iris-api:latest
+
+      - name: Comment on PR that CD was successful
+        shell: bash
+        env:
+          REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          # Extract LoadBalancer IP (if available)
+          EXTERNAL_IP=$(kubectl get service demo-iris-workload-service -o jsonpath='{.status.loadBalancer.ingress[0].ip}')
+          # Extract deployed image SHA digest
+          IMAGE_DIGEST=$(kubectl get deployment demo-iris-workload -o=jsonpath='{.spec.template.spec.containers[0].image}' | cut -d'@' -f2)
+
+          echo "## ✅ CD Success 🚀" > cd_success.md
+          echo "" >> cd_success.md
+          echo "✅ The Docker image was successfully built and pushed to Artifact Registry." >> cd_success.md
+          echo "✅ Deployment to GKE cluster \`demo-gke-iris-cluster\` was completed." >> cd_success.md
+          echo "" >> cd_success.md
+
+          if [ -n "$EXTERNAL_IP" ]; then
+            echo "**Access URL:** [http://$EXTERNAL_IP](http://$EXTERNAL_IP)" >> cd_success.md
+          else
+            echo "**Access URL:** LoadBalancer IP not yet available (may take a few seconds to provision)." >> cd_success.md
+          fi
+
+          echo "" >> cd_success.md
+          echo "**Deployed Image Digest:** \`$IMAGE_DIGEST\`" >> cd_success.md
+
+          cml comment create cd_success.md
+
