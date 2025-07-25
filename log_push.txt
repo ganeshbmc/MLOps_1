@@ -2,3 +2,4 @@
 Fri Jul 25 15:01:27 UTC 2025 - Checking GitHub Actions set up in GA5 before beginning GA6
 Fri Jul 25 15:20:14 UTC 2025 - Modified test files to point to correct file paths
 Fri Jul 25 15:55:39 UTC 2025 - Changed gitignore file and added specific files to be tracked by dvc
+Fri Jul 25 16:01:00 UTC 2025 - Modified test file again and changed back the file path to be relative to root
