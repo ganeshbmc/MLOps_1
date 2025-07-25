@@ -28,22 +28,20 @@ jobs:
           conda activate iris_env_c
           pip install pytest dvc-gs
 
-      - name: Authenticate to Google Cloud and setup GKE
-        uses: google-github-actions/setup-gcloud@v2
-        with:
-          project_id: polar-pillar-461115-g2
-          service_account_key: ${{ secrets.GCP_SERVICE_ACCOUNT_KEY }}
-          install_components: 'gke-gcloud-auth-plugin' # Installs the GKE auth plugin
-          # No need to explicitly install kubectl here, setup-gcloud can also handle it,
-          # or it's often included with the gcloud SDK.
+      - name: Authenticate to Google Cloud
+        run: |
+          echo "$GCP_SERVICE_ACCOUNT_KEY" > gcp-key.json
+          export GOOGLE_APPLICATION_CREDENTIALS=$(pwd)/gcp-key.json
+          gcloud auth activate-service-account --key-file=$GOOGLE_APPLICATION_CREDENTIALS
+        shell: bash
+        env:
+          GCP_SERVICE_ACCOUNT_KEY: ${{ secrets.GCP_SERVICE_ACCOUNT_KEY }}
 
-      - name: Configure Docker for Artifact Registry
-        run: gcloud auth configure-docker us-central1-docker.pkg.dev
 
       - name: DVC Pull Data
         shell: bash -l {0}
         run: |
-          # GOOGLE_APPLICATION_CREDENTIALS is automatically set by setup-gcloud
+          export GOOGLE_APPLICATION_CREDENTIALS=$(pwd)/gcp-key.json
           conda activate iris_env_c
           dvc pull --force
           ls data/
@@ -65,6 +63,18 @@ jobs:
         run: |
           cml comment create report.md
 
+      - name: Authenticate to Google Cloud and setup GKE
+        uses: google-github-actions/setup-gcloud@v2
+        with:
+          project_id: polar-pillar-461115-g2
+          service_account_key: ${{ secrets.GCP_SERVICE_ACCOUNT_KEY }}
+          install_components: 'gke-gcloud-auth-plugin' # Installs the GKE auth plugin
+          # No need to explicitly install kubectl here, setup-gcloud can also handle it,
+          # or it's often included with the gcloud SDK.
+
+      - name: Configure Docker for Artifact Registry
+        run: gcloud auth configure-docker us-central1-docker.pkg.dev
+
       - name: Print current directory and contents
         run: |
           pwd
@@ -78,6 +88,14 @@ jobs:
         run: |
           docker push us-central1-docker.pkg.dev/polar-pillar-461115-g2/my-repo/iris-api:latest
 
+      - name: Install GKE auth plugin
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y google-cloud-cli-gke-gcloud-auth-plugin
+
+      - name: Set up kubectl
+        uses: azure/setup-kubectl@v3
+
       - name: Get GKE credentials
         run: |
           gcloud container clusters get-credentials demo-gke-iris-cluster \
@@ -87,4 +105,3 @@ jobs:
       - name: Deploy latest image to GKE
         run: |
           kubectl set image deployment/demo-iris-workload iris-api-sha256-1=us-central1-docker.pkg.dev/polar-pillar-461115-g2/my-repo/iris-api:latest
-
