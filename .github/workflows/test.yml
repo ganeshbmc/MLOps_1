@@ -1,4 +1,4 @@
-name: CI with CML
+name: CI/CD with CML
 
 on: [pull_request]
 
@@ -63,4 +63,40 @@ jobs:
         run: |
           cml comment create report.md
 
+      - name: Authenticate to Google Cloud and setup GKE
+        uses: google-github-actions/setup-gcloud@v2
+        with:
+          project_id: polar-pillar-461115-g2
+          service_account_key: ${{ secrets.GCP_SERVICE_ACCOUNT_KEY }}
+          install_components: 'gke-gcloud-auth-plugin' # Installs the GKE auth plugin
+          # No need to explicitly install kubectl here, setup-gcloud can also handle it,
+          # or it's often included with the gcloud SDK.
 
+      - name: Configure Docker for Artifact Registry
+        run: gcloud auth configure-docker us-central1-docker.pkg.dev
+
+      - name: Print current directory and contents
+        run: |
+          pwd
+          ls -R
+
+      - name: Build Docker Image
+        run: |
+          docker build -t us-central1-docker.pkg.dev/polar-pillar-461115-g2/my-repo/iris-api:latest docker_demo
+
+      - name: Push Docker Image to Artifact Registry
+        run: |
+          docker push us-central1-docker.pkg.dev/polar-pillar-461115-g2/my-repo/iris-api:latest
+
+      - name: Set up kubectl
+        uses: azure/setup-kubectl@v3
+
+      - name: Get GKE credentials
+        run: |
+          gcloud container clusters get-credentials demo-gke-iris-cluster \
+            --zone us-central1 \
+            --project polar-pillar-461115-g2
+
+      - name: Deploy latest image to GKE
+        run: |
+          kubectl set image deployment/demo-iris-workload iris-api-sha256-1=us-central1-docker.pkg.dev/polar-pillar-461115-g2/my-repo/iris-api:latest
