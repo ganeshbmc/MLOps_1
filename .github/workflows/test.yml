@@ -66,10 +66,14 @@ jobs:
       - name: Configure Docker for Artifact Registry
         run: gcloud auth configure-docker us-central1-docker.pkg.dev
 
+      - name: Print current directory and contents
+        run: |
+          pwd
+          ls -R
+
       - name: Build Docker Image
         run: |
           docker build -t us-central1-docker.pkg.dev/polar-pillar-461115-g2/my-repo/iris-api:latest docker_demo
-        working-directory: ./iris_pipeline
 
       - name: Push Docker Image to Artifact Registry
         run: |
