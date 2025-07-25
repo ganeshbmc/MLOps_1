@@ -79,6 +79,10 @@ jobs:
         run: |
           docker push us-central1-docker.pkg.dev/polar-pillar-461115-g2/my-repo/iris-api:latest
 
+      - name: Install GKE auth plugin
+        run: |
+          gcloud components install gke-gcloud-auth-plugin
+
       - name: Set up kubectl
         uses: azure/setup-kubectl@v3
 
