@@ -68,7 +68,7 @@ jobs:
 
       - name: Build and Push Docker Image to Artifact Registry
         run: |
-          docker build -t us-central1-docker.pkg.dev/polar-pillar-461115-g2/my-repo/iris-api:latest .
+          docker build -t us-central1-docker.pkg.dev/polar-pillar-461115-g2/my-repo/iris-api:latest ./docker-demo
           docker push us-central1-docker.pkg.dev/polar-pillar-461115-g2/my-repo/iris-api:latest
 
       - name: Set up kubectl

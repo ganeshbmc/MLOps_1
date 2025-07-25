@@ -7,3 +7,4 @@ Fri Jul 25 16:59:33 UTC 2025 - FastAPI app set up complete and tested with uvico
 Fri Jul 25 17:51:28 UTC 2025 - Docker set up complete. Checked locally using postman.
 Fri Jul 25 18:58:04 UTC 2025 - Kubernetes successfully set up. Deployed the iris-api docker container; had to change port from 8200 to 80 in Dockerfile. Could successfully test the deployment using postman.
 Fri Jul 25 19:22:51 UTC 2025 - Trying CI/CD combo pipeline for the first time. Not sure about correct authorizations. Fingers crossed.
+Fri Jul 25 19:30:45 UTC 2025 - Second attempt of CI/CD combo pipeline. First attempt failed because of wrong path to Dockerfile in build step. Still not sure about correct k8s authorizations. Fingers crossed.
