@@ -1,0 +1,5 @@
+outs:
+- md5: a1438860e49bdad682a5df2a050cdf27
+  size: 506
+  hash: md5
+  path: feast_iris_label_encoder.joblib

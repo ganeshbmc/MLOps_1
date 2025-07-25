@@ -1,8 +1,15 @@
-iris_venv/
-/data
-/artifacts
-/metrics
+# Ignore everything in data, artifacts, and metrics
+/data/*
+/artifacts/*
+/metrics/*
 
+# Allow the folders themselves
+!data/
+!artifacts/
+!metrics/
+
+# Allow DVC pointer files inside those folders
 !data/*.dvc
 !artifacts/*.dvc
 !metrics/*.dvc
+

@@ -1,0 +1,5 @@
+outs:
+- md5: a1438860e49bdad682a5df2a050cdf27
+  size: 506
+  hash: md5
+  path: label_encoder_2023_2024.joblib
