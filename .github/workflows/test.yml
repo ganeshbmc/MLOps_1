@@ -63,4 +63,23 @@ jobs:
         run: |
           cml comment create report.md
 
+      - name: Configure Docker for Artifact Registry
+        run: gcloud auth configure-docker us-central1-docker.pkg.dev
 
+      - name: Build and Push Docker Image to Artifact Registry
+        run: |
+          docker build -t us-central1-docker.pkg.dev/polar-pillar-461115-g2/my-repo/iris-api:latest .
+          docker push us-central1-docker.pkg.dev/polar-pillar-461115-g2/my-repo/iris-api:latest
+
+      - name: Set up kubectl
+        uses: azure/setup-kubectl@v3
+
+      - name: Get GKE credentials
+        run: |
+          gcloud container clusters get-credentials demo-gke-iris-cluster \
+            --zone us-central1 \
+            --project polar-pillar-461115-g2
+
+      - name: Deploy latest image to GKE
+        run: |
+          kubectl set image deployment/demo-iris-workload iris-api-sha256-1=us-central1-docker.pkg.dev/polar-pillar-461115-g2/my-repo/iris-api:latest
