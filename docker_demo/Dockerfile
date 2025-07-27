@@ -11,7 +11,7 @@ COPY . /app
 RUN pip install --no-cache-dir -r requirements.txt
 
 # 5. Expose port
-EXPOSE 8200
+EXPOSE 80
 
 # 6. Command to run the server
 CMD ["uvicorn", "fastapi_iris:app", "--host", "0.0.0.0", "--port", "80"]
