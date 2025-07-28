@@ -14,8 +14,8 @@ spec:
     spec:
       serviceAccountName: telemetry-access  # See below
       containers:
-      - name: fastapi-container
-        image: us-central1-docker.pkg.dev/dulcet-bastion-452612-v4/my-repo/demo_log:latest
+      - name: iris-api-log-demo-container
+        image: us-central1-docker.pkg.dev/polar-pillar-461115-g2/my-repo/iris-api-log-demo:latest
         ports:
         - containerPort: 8200
         readinessProbe:
