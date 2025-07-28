@@ -133,9 +133,10 @@ async def predict_iris_class(data: IrisInput, request: Request):
             return result
         
         except Exception as e:
-            logger.exception(json.dumps({
+            logger.warning(json.dumps({
                 "event": "prediction_error",
                 "trace_id": trace_id,
-                "error": str(e)
+                "error": str(e),
+                "severity": "WARNING"
             }))
             raise HTTPException(status_code=500, detail="Prediction failed")

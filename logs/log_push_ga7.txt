@@ -1,3 +1,4 @@
 Sun Jul 27 19:30:42 IST 2025 - Checking week 6 CI/CD pipeline before proceeding to week 7 set up.
 Sun Jul 27 19:39:15 IST 2025 - Was working on main instead of dev. Now switched to dev. Checking week 6 pipeline.
 Mon Jul 28 23:31:12 IST 2025 - Checking github actions set up in week 5. Remember that GitHub Actions does not use file from observabiliyt_demo yet.
+Tue Jul 29 04:02:51 IST 2025 - Successfully completed week 7 demo. No changes to github actions.
