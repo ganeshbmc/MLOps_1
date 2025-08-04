@@ -34,4 +34,89 @@ no changes added to commit (use "git add" and/or "git commit -a")
 [?2004lMon Aug  4 21:43:39 IST 2025 - Rest of the work will be done on branch named 'hacker'. This branch will be from main branch at commit d96f15b44460672cd7da64ee74e90e987d7f7498 on Jul 6th which is the final commit for GA5. Idea is start GA8 from this stage as GA6 and GA7 were different and ran from separate folder except for the github actions test.yml file.
 [?2004h(iris_env_c) jupyter@instance-20250527-224052:~/iris_pipeline$ echo "$(date) - Rest of the work will be done on branch named 'hacker'. This branch will be from main branch at commit d96f15b44460672cd7da64ee74e90e987d7f7498 on Jul 6th which is the final commit for GA5. Idea is start GA8 from this stage as GA6 and GA7 were different and ran from separate folder except for the github actions test.yml file." >> logs/log_push_ga8.txt 
 [?2004l[?2004h(iris_env_c) jupyter@instance-20250527-224052:~/iris_pipeline$ cat logs/log_push_ga8.txt 
-[?
+[?2004lMon Aug  4 21:38:55 IST 2025 - Week 8 GA begins. Let us check git status before proceeding.
+Mon Aug  4 21:43:53 IST 2025 - Rest of the work will be done on branch named 'hacker'. This branch will be from main branch at commit d96f15b44460672cd7da64ee74e90e987d7f7498 on Jul 6th which is the final commit for GA5. Idea is start GA8 from this stage as GA6 and GA7 were different and ran from separate folder except for the github actions test.yml file.
+[?2004h(iris_env_c) jupyter@instance-20250527-224052:~/iris_pipeline$ [H[2J(iris_env_c) jupyter@instance-20250527-224052:~/iris_pipeline$ git status
+[?2004lOn branch main
+Your branch is up to date with 'origin/main'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	[31mmodified:   dvc.lock[m
+	[31mmodified:   helpers/__pycache__/feast_utils.cpython-310.pyc[m
+	[31mmodified:   helpers/__pycache__/mlflow_dvc_utils.cpython-310.pyc[m
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	[31m.ipynb_checkpoints/dvc-checkpoint.lock[m
+	[31mlogs/log_push_ga8.txt[m
+	[31mlogs/session_logs_ga8.txt[m
+
+no changes added to commit (use "git add" and/or "git commit -a")
+[?2004h(iris_env_c) jupyter@instance-20250527-224052:~/iris_pipeline$ git add .
+[?2004l[?2004h(iris_env_c) jupyter@instance-20250527-224052:~/iris_pipeline$ git commit -m "Uud[K[Kpdating main before forking a new branch 'hacker' for  GA88"[K[K."
+[?2004l[main 6324a41] Updating main before forking a new branch 'hacker' for GA8.
+ 6 files changed, 222 insertions(+), 21 deletions(-)
+ create mode 100644 .ipynb_checkpoints/dvc-checkpoint.lock
+ create mode 100644 logs/log_push_ga8.txt
+ create mode 100644 logs/session_logs_ga8.txt
+[?2004h(iris_env_c) jupyter@instance-20250527-224052:~/iris_pipeline$ gi tpus[K[K[K[K[Kt push origin manin[K[K[Kin
+[?2004lEnumerating objects: 18, done.
+Counting objects:   5% (1/18)Counting objects:  11% (2/18)Counting objects:  16% (3/18)Counting objects:  22% (4/18)Counting objects:  27% (5/18)Counting objects:  33% (6/18)Counting objects:  38% (7/18)Counting objects:  44% (8/18)Counting objects:  50% (9/18)Counting objects:  55% (10/18)Counting objects:  61% (11/18)Counting objects:  66% (12/18)Counting objects:  72% (13/18)Counting objects:  77% (14/18)Counting objects:  83% (15/18)Counting objects:  88% (16/18)Counting objects:  94% (17/18)Counting objects: 100% (18/18)Counting objects: 100% (18/18), done.
+Delta compression using up to 2 threads
+Compressing objects:   9% (1/11)Compressing objects:  18% (2/11)Compressing objects:  27% (3/11)Compressing objects:  36% (4/11)Compressing objects:  45% (5/11)Compressing objects:  54% (6/11)Compressing objects:  63% (7/11)Compressing objects:  72% (8/11)Compressing objects:  81% (9/11)Compressing objects:  90% (10/11)Compressing objects: 100% (11/11)Compressing objects: 100% (11/11), done.
+Writing objects:   9% (1/11)Writing objects:  18% (2/11)Writing objects:  27% (3/11)Writing objects:  36% (4/11)Writing objects:  45% (5/11)Writing objects:  54% (6/11)Writing objects:  63% (7/11)Writing objects:  72% (8/11)Writing objects:  81% (9/11)Writing objects: 100% (11/11)Writing objects: 100% (11/11), 3.21 KiB | 1.07 MiB/s, done.
+Total 11 (delta 7), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas:   0% (0/7)[Kremote: Resolving deltas:  14% (1/7)[Kremote: Resolving deltas:  28% (2/7)[Kremote: Resolving deltas:  42% (3/7)[Kremote: Resolving deltas:  57% (4/7)[Kremote: Resolving deltas:  71% (5/7)[Kremote: Resolving deltas:  85% (6/7)[Kremote: Resolving deltas: 100% (7/7)[Kremote: Resolving deltas: 100% (7/7), completed with 6 local objects.[K
+To https://github.com/ganeshbmc/MLOps_1.git
+   0ac1b14..6324a41  main -> main
+[?2004h(iris_env_c) jupyter@instance-20250527-224052:~/iris_pipeline$ [H[2J(iris_env_c) jupyter@instance-20250527-224052:~/iris_pipeline$ git log --oneline
+[?2004l[?1h=[33m6324a41[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m Updating main before forking a new branch 'hacker' for GA8.[m
+[33m0ac1b14[m Merge pull request #26 from ganeshbmc/dev[m
+[33mbf67f86[m[33m ([m[1;31morigin/dev[m[33m, [m[1;32mdev[m[33m)[m Successfully completed week 7 demo. No changes to github actions. Minor changes in log files added.[m
+[33m6c77d28[m Successfully completed week 7 demo. No changes to github actions.[m
+[33m6bcda85[m Week 7 GA complete[m
+[33m80be7bb[m Merge pull request #25 from ganeshbmc/dev[m
+[33m6ee2181[m Checking github actions set up in week 5. Remember that GitHub Actions does not use file from observabiliyt_demo yet.[m
+[33macc22a2[m Merge pull request #24 from ganeshbmc/dev[m
+[33m11e0dc1[m Docker up and running after file edits in observability_demo files. Checked GET/PUSH calls.[m
+[33mc2fe5a9[m Merge pull request #23 from ganeshbmc/dev[m
+[33m90a8551[m Created new folder for week 7 work on monitoring, logging, trace and observability. Added the files. Need to check and edit [m [33m[mone by one.[m
+[33mea94c9b[m Pushing log to check week 6 CI/CD pipeline[m
+[33m0a0a8a0[m minor changes to sesion log[m
+[33m9d835e4[m minor changes to log file[m
+[33m3ccee3f[m Merge branch 'main' of https://github.com/ganeshbmc/MLOps_1[m
+[33m7260e33[m Organized the log files into log folder and renamed them week wise.[m
+[33m401a72b[m Merge pull request #22 from ganeshbmc/dev[m
+[33m9e575bc[m GA6 session ended[m
+[33m869271c[m Successful GA6 demo[m
+[33mcd3ac9a[m Merge pull request #21 from ganeshbmc/dev[m
+[33mdc0d6b7[m CI/CD pipeline already successful. Now adding some comments to PR using CML.[m
+[33m48967f2[m Merge pull request #20 from ganeshbmc/dev[m
+[33m2ca5537[m Eleventh attempt of CI/CD combo pipeline.[m
+[33m674438a[m Tenth attempt of CI/CD combo pipeline.[m
+[33mf068f7d[m Ninth attempt of CI/CD combo pipeline.[m
+[33mf0244f7[m Eighth attempt of CI/CD combo pipeline.[m
+[33mb76f75c[m Seventh attempt of CI/CD combo pipeline.[m
+[33mf419c18[m Sixth attempt of CI/CD combo pipeline.[m
+[33me9da3a9[m Fifth attempt of CI/CD combo pipeline.[m
+[33m70fe85e[m Fourth attempt of CI/CD combo pipeline.[m
+[33md5c545c[m Third attempt of CI/CD combo pipeline.[m
+[33m564e1a7[m Second attempt of CI/CD combo pipeline.[m
+[33m1487ccd[m Trying CI/CD combo pipeline for the first time. Not sure about correct authorizations. Fingers crossed.[m
+[33mc6949ba[m Merge pull request #19 from ganeshbmc/dev[m
+[33m0d03572[m Kubernetes successfully set up. Deployed the iris-api docker container; had to change port from 8200 to 80 in Dockerfile. Co[m [33m[muld successfully test the deployment using postman.[m
+[33m1d7f9a6[m Merge pull request #18 from ganeshbmc/dev[m
+[33m838aaf6[m Docker set up complete. Checked locally using postman.[m
+[33mcc7cb7e[m Merge pull request #17 from ganeshbmc/dev[m
+[33m32ff8d2[m FastAPI app set up complete and tested with uvicorn locally. Used label encoder in addition to model joblib file[m
+[33m467af6c[m Merge pull request #16 from ganeshbmc/dev[m
+[33mb732b45[m Modified test file again and changed back the file path to be relative to root[m
+[33mef601b2[m Changed gitignore file and added specific files to be tracked by dvc[m
+[33m4b7f2dd[m Modified test files to point to correct file paths[m
+[33m36cdd4f[m Checking GitHub Actions set up in GA5 before beginning GA6[m
+[33ma0955f0[m Checking GitHub Actions set up in GA5 before beginning GA6[m
+[33md96f15b[m Merge pull request #15 from ganeshbmc/dev[m
+[33m2ba4dea[m GA5 completed successfully[m
+:[K[K[?1l>[?2004h(iris_env_c) jupyter@instance-20250527-224052:~/iris_pipeline$ [H[2J(iris_env_c) jupyter@instance-20250527-224052:~/iris_pipeline$ git checkout hacker [K-hackerbhacker hacker hacker[1Phacker[C[C[C[C[C[C [7md96f15b44460672cd7da64ee74e90e987d7f7498[27m
