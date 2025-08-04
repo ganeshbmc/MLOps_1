@@ -1,0 +1,66 @@
+name: CI with CML
+
+on: [pull_request, workflow_dispatch]
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  run-tests:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Miniconda
+        uses: conda-incubator/setup-miniconda@v3
+        with:
+          environment-file: environment.yml
+          activate-environment: iris_env_c
+          auto-activate-base: false
+          miniforge-variant: Miniforge3
+
+      - name: Install required Python packages (pytest, dvc-gs)
+        shell: bash -l {0}
+        run: |
+          conda activate iris_env_c
+          pip install pytest dvc-gs
+
+      - name: Authenticate to Google Cloud
+        run: |
+          echo "$GCP_SERVICE_ACCOUNT_KEY" > gcp-key.json
+          export GOOGLE_APPLICATION_CREDENTIALS=$(pwd)/gcp-key.json
+          gcloud auth activate-service-account --key-file=$GOOGLE_APPLICATION_CREDENTIALS
+        shell: bash
+        env:
+          GCP_SERVICE_ACCOUNT_KEY: ${{ secrets.GCP_SERVICE_ACCOUNT_KEY }}
+
+
+      - name: DVC Pull Data
+        shell: bash -l {0}
+        run: |
+          export GOOGLE_APPLICATION_CREDENTIALS=$(pwd)/gcp-key.json
+          conda activate iris_env_c
+          dvc pull --force
+          ls data/
+          ls artifacts/
+
+      - name: Run tests and create report
+        shell: bash -l {0}
+        run: |
+          conda activate iris_env_c
+          echo "## Test Report" > report.md
+          pytest -s tests/ --tb=short -p no:warnings >> report.md || true
+
+      - name: Set up CML
+        uses: iterative/setup-cml@v2
+
+      - name: Comment on PR with test results
+        env:
+          REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          cml comment create report.md
+
+
