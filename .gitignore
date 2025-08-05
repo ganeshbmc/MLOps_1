@@ -13,3 +13,6 @@
 !artifacts/*.dvc
 !metrics/*.dvc
 
+# Ignore ipynb checkpoints
+.ipynb_checkpoints/
+scripts/.ipynb_checkpoints/*

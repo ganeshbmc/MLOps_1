@@ -1,2 +1,3 @@
 Mon Aug  4 21:38:55 IST 2025 - Week 8 GA begins. Let us check git status before proceeding.
 Mon Aug  4 21:43:53 IST 2025 - Rest of the work will be done on branch named 'hacker'. This branch will be from main branch at commit d96f15b44460672cd7da64ee74e90e987d7f7498 on Jul 6th which is the final commit for GA5. Idea is start GA8 from this stage as GA6 and GA7 were different and ran from separate folder except for the github actions test.yml file.
+Tue Aug  5 21:05:23 IST 2025 - Check dvc pipeline, mlflow tracking before poisoning data.
