@@ -614,4 +614,489 @@ Compressing objects:   7% (1/13)Compressing objects:  15% (2/13)Compressing ob
 Writing objects:   7% (1/14)Writing objects:  14% (2/14)Writing objects:  21% (3/14)Writing objects:  28% (4/14)Writing objects:  35% (5/14)Writing objects:  42% (6/14)Writing objects:  50% (7/14)Writing objects:  57% (8/14)Writing objects:  64% (9/14)Writing objects:  71% (10/14)Writing objects:  78% (11/14)Writing objects:  85% (12/14)Writing objects:  92% (13/14)Writing objects: 100% (14/14)Writing objects: 100% (14/14), 13.57 KiB | 1.70 MiB/s, done.
 Total 14 (delta 8), reused 0 (delta 0), pack-reused 0
 remote: Resolving deltas:   0% (0/8)[Kremote: Resolving deltas:  12% (1/8)[Kremote: Resolving deltas:  25% (2/8)[Kremote: Resolving deltas:  37% (3/8)[Kremote: Resolving deltas:  50% (4/8)[Kremote: Resolving deltas:  62% (5/8)[Kremote: Resolving deltas:  75% (6/8)[Kremote: Resolving deltas:  87% (7/8)[Kremote: Resolving deltas: 100% (8/8)[Kremote: Resolving deltas: 100% (8/8), completed with 6 local objects.[K
-To https://github.com/ganeshbmc/
+To https://github.com/ganeshbmc/MLOps_1.git
+   5ad5d42..9307eca  hacker -> hacker
+[?2004h(iris_env_c) jupyter@instance-20250527-224052:~/iris_pipeline$ git checkout main
+[?2004lerror: Your local changes to the following files would be overwritten by checkout:
+	logs/session_logs_ga8.txt
+Please commit your changes or stash them before you switch branches.
+Aborting
+[?2004h(iris_env_c) jupyter@instance-20250527-224052:~/iris_pipeline$ git [K[K[K[Kgit add .
+[?2004l[?2004h(iris_env_c) jupyter@instance-20250527-224052:~/iris_pipeline$ git co[K[K[K[K[K[Khistory 
+[?2004l   35  git commmit -m "Modified test files to point to correct file paths"
+   36  git push origin dev
+   37  git status
+   38  git commit -m "Modified test files to point to correct file paths"
+   39  git push origin dev
+   40  dvc list .
+   41  dvc list -R .
+   42  dvc list . --dvc-only -R
+   43  dvc status
+   44  dvc status -c
+   45  cat .gitignore 
+   46  vim .gitignore 
+   47  git status
+   48  vim .gitignore 
+   49  dvc status
+   50  dvc add .
+   51  dvc status --untracked
+   52  dvc status --untracked . -R
+   53  dvc status --untracked data
+   54  dvc status --untracked ./data
+   55  dvc status
+   56  dvc add artifacts/feast_iris_model.joblib artifacts/feast_iris_label_encoder.joblib artifacts/label_encoder_2023_2024.joblib
+   57  dvc add artifacts/label_encoder_2023.joblib artifacts/model_2023_2024.joblib artifacts/model_2023.joblib artifacts/model_2024.joblib 
+   58  dvc add artifacts/label_encoder_2023.joblib
+   59  dvc status
+   60  git status
+   61  git add .
+   62  git status
+   63  dvc add data/iris_entity.csv data/iris_petal.csv data/iris_petal.parquet data/iris_sepal.csv data/iris_sepal.parquet data/online_features_iris.csv 
+   64  dvc add data/test_2025.csv 
+   65  dvc status
+   66  git status
+   67  echo "$(date) - Changed gitignore file and added specific files to be tracked by dvc
+   68  "
+   69  echo "$(date) - Changed gitignore file and added specific files to be tracked by dvc" >> log_push.txt 
+   70  cat log_push.txt 
+   71  git status
+   72  git add ..
+   73  git add .
+   74  git status
+   75  cat log_push.txt 
+   76  git commit -m "Changed gitignore file and added specific files to be tracked by dvc"
+   77  git status
+   78  git push origin dev
+   79  git status
+   80  echo "$(date) - Modified test file again and changed back the file path to be relative to root"
+   81  echo "$(date) - Modified test file again and changed back the file path to be relative to root" >> log_push.txt 
+   82  git status
+   83  git add .
+   84  git commit -m "Modified test file again and changed back the file path to be relative to root"
+   85  git push origin dev
+   86  conda deactivate
+   87  ls
+   88  cd iris_pipeline/
+   89  cat docker_demo/fastapi_iris.py 
+   90  script logs/session_logs_ga7.txt
+   91  conda activate iris_env_c
+   92  git status
+   93  echo "$(date) - Checking week 6 CI/CD pipeline before proceeding to week 7 set up"
+   94  sudo timedatectl set-timezone Asia/Kolkata
+   95  echo "$(date) - Checking week 6 CI/CD pipeline before proceeding to week 7 set up"
+   96  echo "$(date) - Checking week 6 CI/CD pipeline before proceeding to week 7 set up." >> logs/log_push_ga7.txt
+   97  git status
+   98  git add .
+   99  git commit -m "Organized the log files into log folder and renamed them week wise."
+  100  git push origin main
+  101  git pull origin main
+  102  git push origin main
+  103  git status
+  104  git checkout dev
+  105  git add .
+  106  git commit -m "minor changes to log file"
+  107  git push origin main
+  108  git checkout dev
+  109  git status
+  110  git add .
+  111  git commit -m "minor changes to sesion log"
+  112  git push origin main
+  113  git checkout dev
+  114  git status
+  115  git status
+  116  git pull origin dev
+  117  git merge main
+  118  git push origin dev
+  119  git status
+  120  git add .
+  121  git status
+  122  git status
+  123  git status
+  124  echo "$(date) - Was working on main instead of dev. Now switched to dev. Checking week 6 pipeline."
+  125  echo "$(date) - Was working on main instead of dev. Now switched to dev. Checking week 6 pipeline." >> logs/log_push_ga7.txt 
+  126  git status
+  127  git add .
+  128  git commit -m "Pushing log to check week 6 CI/CD pipeline"
+  129  git push origin dev
+  130  cd observability_demo/
+  131  cp ../docker_demo/fastapi_iris.py .
+  132  ls
+  133  ls -larth ../docker_demo/
+  134  cp ../docker_demo/feast_iris_model.joblib ../docker_demo/feast_iris_label_encoder.joblib ../docker_demo/Dockerfile ../docker_demo/requirements.txt .
+  135  ls -larth
+  136  mv fastapi_iris.py demo_log.py
+  137  ls -larth
+  138  ls -larth
+  139  git status
+  140  cd ..
+  141  git status
+  142  git add .
+  143  git commit -m "Created new folder for week 7 work on monitoring, logging, trace and observability. Added the files. Need to check and edit one by one."
+  144  git satus
+  145  git status
+  146  conda activate iris_env_c
+  147  docker images
+  148  docker build -t iris-api-log-demo .
+  149  cd observability_demo/
+  150  docker build -t iris-api-log-demo .
+  151  docker images
+  152  docker run -d -p 8200:8200 iris-api-log-demo
+  153  docker logs
+  154  docker logs 4e8bda1fe4836d36e6f4c412251b7003e2870386098b8668c72995459a4fe2f4
+  155  docker build -t iris-api-log-demo .
+  156  docker images
+  157  docker run -d -p 8200:8200 iris-api-log-demo
+  158  docker logs ac8c7ead5c6fedc8e7ad0c503b9da7d522d81808ee008d233740178d67620168
+  159  docker ps
+  160  docker buid -t iris-api-log-demo .
+  161  docker build -t iris-api-log-demo .
+  162  docker images
+  163  docker run -d -p 8200:8200 iris-api-log-demo
+  164  docker logs 3732e0d735a1efd4d49d332972bcb072ecb618ceaeac217e6c0f81949975d108
+  165  docker build -t iris-api-log-demo .
+  166  docker run -d -p 8200:8200 iris-api-log-demo
+  167  docker logs e18aa7bf21ccaa006fde40fa06d18761751578ca8bebf961fde5c574146db8c5
+  168  python3 demo_log_iris_app.py 
+  169  python3 demo_log_iris_app.py 
+  170  docker build -t iris-api-log-demo .
+  171  docker run -d -p 8200:8200 iris-api-log-demo
+  172  docker logs 4d67e19c6e5436bd99f8fac63268d88fa97c5f5209875f3d6d42c49bcd3fddc0
+  173  docker build -t iris-api-log-demo .
+  174  docker run -d -p 8200:8200 iris-api-log-demo
+  175  docker logs bd345eb728520524ed425a60601e114c65cd7717b340b33b49b7406838dc55e2
+  176  git status
+  177  git add .
+  178  docker build -t iris-api-log-demo .
+  179  docker build -t iris-api-log-demo .
+  180  docker run -d -p 8200:8200 iris-api-log-demo
+  181  docker ps
+  182  docker stop heuristic_matsumoto
+  183  docker ps
+  184  docker run -d -p 8200:8200 iris-api-log-demo
+  185  docker logs ad36afc78b0bab823b62dcd0d7dc01dd4655379fd23f50f2a6b62aecc0357b14
+  186  git status
+  187  git add .
+  188  git commit -m "Docker up and running after file edits in observability_demo files. Checked GET/PUSH calls."
+  189  git push origin dev
+  190  conda deactivate
+  191  exit
+  192  pwd
+  193  git status
+  194  cd iris_pipeline/
+  195  git status
+  196  script -a logs/session_logs_ga7.txt 
+  197  git status
+  198  exit
+  199  conda activate iris_env_c
+  200  $date
+  201  date
+  202  echo "($date) - hi"
+  203  echo "$(date) - hi"
+  204  echo "$(date) - Checking github actions set up in week 5. Remember that GitHub Actions does not use file from observabiliyt_demo yet." >> logs/log_push_ga7.txt 
+  205  cat logs/log_push_ga7.txt 
+  206  git status
+  207  git add .
+  208  git commit -m "Checking github actions set up in week 5. Remember that GitHub Actions does not use file from observabiliyt_demo yet."
+  209  git push origin dev
+  210  echo "$(date) - check docker image built for week 7 GA, run it and check if it works."
+  211  ip addr show
+  212  curl ifconfig.me
+  213  docker images
+  214  docker run -d -p 8200:8200 iris-api-log-demo 
+  215  curl ifconfig.me
+  216  docker ps
+  217  docker logs 6245d89e49c8ff5b1dd5bb19ce0ce0ecc6ca68855ba8bc1db2a565932c4900df
+  218  docker logs 6245d89e49c8ff5b1dd5bb19ce0ce0ecc6ca68855ba8bc1db2a565932c4900df
+  219  docker stop hungry_pike
+  220  docker ps
+  221  docker tag iris-api-log-demo us-central1-docker.pkg.dev/polar-pillar-461115-g2/my-repo/iris-api-log-demo:latest
+  222  docker push us-central1-docker.pkg.dev/polar-pillar-461115-g2/my-repo/iris-api-log-demo:latest
+  223  echo "$(date) - Docker image pushed to artifact registry in us-central1 location."
+  224  echo "$(date) - Now we will set up a new kubernetes cluster on GKE asia-southeast1 region with 5 pods using commanline (kubectl)."
+  225  gcloud container clusters create demo-log-ml-cluster --zone=asia-southeast1-a --num-nodes=3 --workload-pool=$(gcloud config get-value project).svc.id.goog --logging=SYSTEM,WORKLOAD --monitoring=SYSTEM
+  226  pwd
+  227  echo "$(date) - K8s cluster named demo-log-ml-cluster created in asia-southeast1-a zone and verified on GCP using UI."
+  228  echo "$(date) - Before deploying the workloads, will enbale few gcloud services for logging, monitoring and tracing to work."
+  229  2.	gcloud services enable container.googleapis.com     logging.googleapis.com     monitoring.googleapis.com     cloudtrace.googleapis.com
+  230  gcloud services enable container.googleapis.com     logging.googleapis.com     monitoring.googleapis.com     cloudtrace.googleapis.com
+  231  echo "$(date) - Set the context for K8s cluster named demo-log-ml-cluster so that kubectl commands will work on this specific cluster."
+  232  gcloud container clusters get-credentials demo-log-ml-cluster
+  233  gcloud container clusters get-credentials demo-log-ml-cluster --zone=asia-southeast1-a
+  234  echo "$(date) - Check the nodes, pods and services in the demo-log-ml-cluster cluster."
+  235  kubectl get nodes
+  236  kubectl get pods
+  237  kubectl get services
+  238  echo "$(date) - Create service account for telemetry-access (same name mentioned in the deployment.yaml file) and add I AM roles to enable logging and cloudtrace."
+  239  gcloud iam service-accounts create telemetry-access --display-name "Access for GKE ML service"
+  240  PROJECT_ID=$(gcloud config get-value project)
+  241  echo $(PROJECT_ID)
+  242  echo $PROJECT_ID
+  243  gcloud projects add-iam-policy-binding $PROJECT_ID --member="serviceAccount:telemetry-access@$PROJECT_ID.iam.gserviceaccount.com" --role="roles/logging.logWriter"
+  244  gcloud projects add-iam-policy-binding polar-pillar-461115-g2     --member="serviceAccount:831589306777-compute@developer.gserviceaccount.com"     --role="roles/resourcemanager.projectIamAdmin"
+  245  gcloud projects add-iam-policy-binding $PROJECT_ID --member="serviceAccount:telemetry-access@$PROJECT_ID.iam.gserviceaccount.com" --role="roles/logging.logWriter"
+  246  gcloud projects add-iam-policy-binding $PROJECT_ID --member="serviceAccount:telemetry-access@$PROJECT_ID.iam.gserviceaccount.com" --role="roles/cloudtrace.agent"
+  247  gcloud projects add-iam-policy-binding $PROJECT_ID --member="serviceAccount:telemetry-access@$PROJECT_ID.iam.gserviceaccount.com" --role="roles/monitoring.metricWriter"
+  248  gcloud projects add-iam-policy-binding $PROJECT_ID --member="serviceAccount:telemetry-access@$PROJECT_ID.iam.gserviceaccount.com" --role="roles/logging.logWriter"
+  249  echo "$(date) - Everytime a GKE cluster is created, a kubernetes service account needs to be created and mapped to the Google cloud service acccount so that the two system users can talk to each other."
+  250  kubectl create service account telemetry-access --namespace default
+  251  kubectl create serviceaccount telemetry-access --namespace default
+  252  echo "$(date) - K8s service account is created. Next is mapping to google cloud service account which is also called annotation."
+  253  kubectl annotate serviceaccount telemetry-access --namespace default iam.gke.io/gcp-service-account=telemetry-access@$PROJECT_ID.iam.gserviceaccount.com
+  254  gcloud iam service-accounts add-iam-policy-binding telemetry-access@$PROJECT_ID.iam.gserviceaccount.com --role roles/iam.workloadIdentityUser --member "serviceAccount:$PROJECT_ID.svc.id.goog[default/telemetry-access]"
+  255  echo "$(date) - This error is probably because I am already logged in and it is already set up for me."
+  256  echo "$(date) - Now the mapping or annotation of K8s service account to google cloud service account is complete. Now, the telemetry-access service account will be automatically used by the k8s cluster to log information to the various google cloud services like logging, monitoring, tracing we will use."
+  257  echo "$(date) - Confirm that the service accounts set up and mapping/annotation works correctly."
+  258  kubectl -h
+  259  kubectl cluster-info
+  260  kubectl config current-context
+  261  kubectl get serviceaccount telemetry-access -n default
+  262  kubectl describe serviceaccount telemetry-access -n default 
+  263  gcloud iam service-accounts get-iam-policy telemetry-access@$PROJECT_ID.iam.gserviceaccount.com
+  264  gcloud projects add-iam-policy-binding polar-pillar-461115-g2     --member="serviceAccount:telemetry-access@polar-pillar-461115-g2.iam.gserviceaccount.com"     --role="roles/logging.logWriter"
+  265  gcloud iam service-accounts get-iam-policy telemetry-access@$PROJECT_ID.iam.gserviceaccount.com
+  266  gcloud iam service-accounts add-iam-policy-binding telemetry-access@$PROJECT_ID.iam.gserviceaccount.com   --role roles/iam.workloadIdentityUser   --member "serviceAccount:$PROJECT_ID.svc.id.goog[default/telemetry-access]"
+  267  gcloud iam service-accounts get-iam-policy telemetry-access@$PROJECT_ID.iam.gserviceaccount.com
+  268  gcloud auth login
+  269  gcloud iam service-accounts add-iam-policy-binding telemetry-access@$PROJECT_ID.iam.gserviceaccount.com   --role roles/iam.workloadIdentityUser   --member "serviceAccount:$PROJECT_ID.svc.id.goog[default/telemetry-access]"
+  270  gcloud iam service-accounts get-iam-policy telemetry-access@$PROJECT_ID.iam.gserviceaccount.com
+  271  echo "$(date) - Now the mapping or annotation of K8s service account to google cloud service account is complete. Now, the telemetry-access service account will be automatically used by the k8s cluster to log information to the various google cloud services like logging, monitoring, tracing we will use."
+  272  echo "$(date) - Mapping or annotation of K8s service account to google cloud service account is verified."
+  273  echo "$(date) - We can now deploy the Docker image which is already available in the artifacts registry. We will use the deployment.yaml file for this."
+  274  kubectl apply -f deployment.yaml
+  275  cd observability_demo/
+  276  kubectl apply -f deployment.yaml
+  277  echo "$(date) - Next we can deploy the other manifests like the service.yaml and hpa.yaml."
+  278  kubectl apply -f service.yaml
+  279  kubectl apply -f hpa.yaml 
+  280  echo "$(date) - Check the external IP address that is going to be exposed by the K8s cluster."
+  281  kubectl get service demo-log-ml-service
+  282  pwd
+  283  cd ..
+  284  cd observability_demo/
+  285  docker images
+  286  docker build -t iris-api-log-demo .
+  287  docker tag iris-api-log-demo us-central1-docker.pkg.dev/polar-pillar-461115-g2/my-repo/iris-api-log-demo:latest
+  288  docker push us-central1-docker.pkg.dev/polar-pillar-461115-g2/my-repo/iris-api-log-demo:latest
+  289  kubectl rollout restart deployment demo-log-ml-service
+  290  echo "$(date) - Deployment to k8s successful. Tested with Postman. Checked logging, trace to make sure everything is working as expected."
+  291  echo "$(date) - Next is to load test it. Install wrk and test."
+  292  sudo apt-get install wrk
+  293  vim post.lua
+  294  cat post.lua 
+  295  wrk -t4 -c100 -d30s --latency -s post.lua http://34.124.181.99/predict
+  296  vim post.lua
+  297  vim post.lua
+  298  vim post.lua
+  299  rm -f post.lua.swp
+  300  vim post.lua
+  301  rm -f .post.lua.swp
+  302  vim post.lua
+  303  wrk -t4 -c100 -d5s --latency -s post.lua http://34.124.181.99/predict
+  304  kubectl get service demo-log-ml-service
+  305  wrk -t4 -c100 -d5s --latency -s post.lua http://34.124.181.99/predict/
+  306  wrk -t4 -c100 -d5s --latency -s post.lua http://34.124.181.99/predict/
+  307  wrk -t4 -c100 -d300s --latency -s post.lua http://34.124.181.99/predict/
+  308  wrk -t12 -c400 -d30s --latency -s post.lua http://34.124.181.99/predict/
+  309  pwd
+  310  git status
+  311  git add .
+  312  git commit -m "Week 7 GA complete"
+  313  kubectl get service demo-log-ml-service
+  314  echo "$(date) - The following commands will be part of the demo video for GA7 MLOps course."
+  315  wrk -t12 -c400 -d10s --latency -s post.lua http://34.124.181.99/predict/
+  316  echo "$(date) - Successfully completed week 7 demo. No changes to github actions."
+  317  echo "$(date) - Successfully completed week 7 demo. No changes to github actions." >> ../logs/log_push_ga7.txt 
+  318  cat ../logs/log_push_ga77
+  319  cat ../logs/log_push_ga7.txt 
+  320  git add .
+  321  git commit -m "Successfully completed week 7 demo. No changes to github actions."
+  322  git push origin devv
+  323  git push origin dev
+  324  exit
+  325  conda deactivate
+  326  exit
+  327  exit
+  328  git status
+  329  script -a logs/session_logs_ga7.txt 
+  330  git status
+  331  git add .
+  332  git commit -m "Successfully completed week 7 demo. No changes to github actions. Minor changes in log files added."
+  333  git push origin dev
+  334  exit
+  335  ls
+  336  cat logs/log_push_ga7.txt 
+  337  date
+  338  git status
+  339  git add .
+  340  git status
+  341  git commit -m "No updates. Just pushing to check everything is in place."
+  342  git push origin dev
+  343  git checkout main
+  344  git pull origin main
+  345  git merge dev
+  346  git push origin main
+  347  dvc list
+  348  dvc list --dvc-only .
+  349  dvc status
+  350  dvc repro evaluate_2023
+  351  dvc repro train_2023
+  352  dvc repro evaluate_2023
+  353  dvc repro --force
+  354  conda activate iris_env_c
+  355  dvc repro --force
+  356  conda deactivate
+  357  script logs/session_logs_ga8.txt
+  358  conda activate iris_env_c
+  359  echo "($date) - Week 8 GA begins. Let us check git status before proceeding."
+  360  echo "$(date) - Week 8 GA begins. Let us check git status before proceeding."
+  361  touch logs/log_push_ga8.txt
+  362  cat logs/log_push_ga8.txt 
+  363  echo "$(date) - Week 8 GA begins. Let us check git status before proceeding." >> logs/log_push_ga8.txt 
+  364  cat logs/log_push_ga8.txt 
+  365  git status
+  366  echo "$(date) - Rest of the work will be done on branch named 'hacker'. This branch will be from main branch at commit d96f15b44460672cd7da64ee74e90e987d7f7498 on Jul 6th which is the final commit for GA5. Idea is start GA8 from this stage as GA6 and GA7 were different and ran from separate folder except for the github actions test.yml file."
+  367  echo "$(date) - Rest of the work will be done on branch named 'hacker'. This branch will be from main branch at commit d96f15b44460672cd7da64ee74e90e987d7f7498 on Jul 6th which is the final commit for GA5. Idea is start GA8 from this stage as GA6 and GA7 were different and ran from separate folder except for the github actions test.yml file." >> logs/log_push_ga8.txt 
+  368  cat logs/log_push_ga8.txt 
+  369  git status
+  370  git add .
+  371  git commit -m "Updating main before forking a new branch 'hacker' for GA8."
+  372  git push origin main
+  373  git log --oneline
+  374  git checkout -b hacker d96f15b44460672cd7da64ee74e90e987d7f7498
+  375  git add .
+  376  git commit -m "minor changes"
+  377  git push origin main
+  378  git checkout -b hacker d96f15b44460672cd7da64ee74e90e987d7f7498
+  379  git push origin hacker
+  380  vim .github/workflows/test.yml 
+  381  git status
+  382  git push origin hacker
+  383  git add .
+  384  git commit -m "Added workflow_dispatch to test.yml actions workflow file to enable manual triggering of github action."
+  385  git push origin hacker
+  386  mv .github/workflows/test.yml .github/workflows/hacker_ci_cml_ga8.yml
+  387  ls .github/workflows/
+  388  cat .github/workflows/hacker_ci_cml_ga8.yml 
+  389  git status
+  390  git add .
+  391  git commit -m "Renamed the GitHub Actions Workflow yml file to see if the Action shows up on GitHub repo for manual trigger."
+  392  git push origin hacker
+  393  gh workflow run "CI with CML" --ref hacker
+  394  pip install gh
+  395  gh workflow run "CI with CML" --ref hacker
+  396  pip uninstall gh
+  397  sudo apt install gh
+  398  sudo snap install gh
+  399  sudo apt update
+  400  sudo apt install snap
+  401  sudo snap install gh
+  402  sudo apt install snapd -y
+  403  snap version
+  404  sudo snap install gh
+  405  gh --version
+  406  sudo reboot
+  407  conda activate iris_env_c
+  408  gh --version
+  409  gh auth login
+  410  sudo snap remove gh
+  411  sudo apt update
+  412  sudo apt install gh -y
+  413  # 1. Remove any broken/missing packages
+  414  sudo apt clean
+  415  sudo apt update
+  416  # 2. Install GitHub CLI from GitHub's official apt repo
+  417  # Add keyring
+  418  curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg |   sudo dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg
+  419  sudo chmod go+r /usr/share/keyrings/githubcli-archive-keyring.gpg
+  420  # Add the GitHub CLI repo
+  421  echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" |   sudo tee /etc/apt/sources.list.d/github-cli.list > /dev/null
+  422  # Update and install gh
+  423  sudo apt update
+  424  sudo apt install gh -y
+  425  gh --version
+  426  which gh
+  427  sudo snap remove gh
+  428  hash -r
+  429  which gh
+  430  gh --version
+  431  gh workflow run "CI with CML" --ref hacker
+  432  gh auth login
+  433  gh workflow run "CI with CML" --ref hacker
+  434  git status
+  435  cat .github/workflows/hacker_ci_cml_ga8.yml 
+  436  gh workflow list
+  437  gh workflow run hacker_ci_cml_ga8.yml --ref hacker
+  438  git checkout main
+  439  git status
+  440  git add .
+  441  git commit -m "minor changes"
+  442  git checkout main
+  443  git checkout hacker -- .github/workflows/hacker_ci_cml_ga8.yml
+  444  git add .github/workflows/hacker_ci_cml_ga8.yml 
+  445  git commit -m "Add CI with CML workflow from hacker branch"
+  446  git push origin main
+  447  git status
+  448  git checkout hacker
+  449  gh workflow run "CI with CML" --ref hacker
+  450  cat .github/workflows/hacker_ci_cml_ga8.yml 
+  451  git status
+  452  git checkout main
+  453  git pull origin main
+  454  git checkout -b dummy
+  455  git touch dummy.txt
+  456  git add .
+  457  git status
+  458  cat dummy.txt 
+  459  git add .
+  460  git status
+  461  vim dummy.txt 
+  462  git add .
+  463  git status
+  464  git commit -m "Dummy branch, dummy commit, to trigger action on PR"
+  465  git push origin dummy
+  466  dvc status
+  467  git checkout main
+  468  dvc status
+  469  dvc push
+  470  git checkout dummy
+  471  vim dummy.txt 
+  472  git add .
+  473  git status
+  474  git commit -m "another dummy push for PR"
+  475  git push origin dummy
+  476  git checkout hacker
+  477  git status
+  478  conda deactivate
+  479  exit
+  480  cd iris_pipeline/
+  481  git status
+  482  script session_logs_ga8.txt
+  483  ls
+  484  git sattus
+  485  git status
+  486  git branch -d hacker
+  487  git checkout main
+  488  git branch -d hacker
+  489  git branch -D hacker
+  490  git push --delete hacker
+  491  git push origin --delete hacker
+  492  ls -larth
+  493  git tag pre-poisoned
+  494  git tag -d pre-poisoned 
+  495  git tag -a pre-poisoned -m "This is the state of the repo before data poisoning"
+  496  git tag
+  497  git push origin pre-poisoned 
+  498  git checkout -b hacker
+  499  git status
+  500  git push origin hacker
+  501  conda activate iris_env_c
+  502  git status
+  503  dvc repro
+  504  mv .github/workflows/test.yml .github/workflows/test.yml.tmp
+  505  ls .github/workflows/
+  506  git status
+  507  cat .github/workflows/test.yml.tmp 
+  508  git add .
+  509  echo "$(data) - Check dvc pipeline, mlflow tracking before poisoning data."
+  510  echo "$(date) - Check dvc pipeline, mlflow tracking before poisoning data."
+  51
